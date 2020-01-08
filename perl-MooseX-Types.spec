@@ -4,13 +4,13 @@
 #
 Name     : perl-MooseX-Types
 Version  : 0.50
-Release  : 1
+Release  : 2
 URL      : https://cpan.metacpan.org/authors/id/E/ET/ETHER/MooseX-Types-0.50.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/E/ET/ETHER/MooseX-Types-0.50.tar.gz
-Summary  : Organise your Moose types in libraries
+Summary  : 'Organise your Moose types in libraries'
 Group    : Development/Tools
-License  : Artistic-1.0 Artistic-1.0-Perl GPL-1.0
-Requires: perl-MooseX-Types-license = %{version}-%{release}
+License  : Artistic-1.0-Perl
+Requires: perl-MooseX-Types-perl = %{version}-%{release}
 BuildRequires : buildreq-cpan
 BuildRequires : perl(B::Hooks::EndOfScope)
 BuildRequires : perl(Carp::Clan)
@@ -56,22 +56,23 @@ Summary: dev components for the perl-MooseX-Types package.
 Group: Development
 Provides: perl-MooseX-Types-devel = %{version}-%{release}
 Requires: perl-MooseX-Types = %{version}-%{release}
-Requires: perl-MooseX-Types = %{version}-%{release}
 
 %description dev
 dev components for the perl-MooseX-Types package.
 
 
-%package license
-Summary: license components for the perl-MooseX-Types package.
+%package perl
+Summary: perl components for the perl-MooseX-Types package.
 Group: Default
+Requires: perl-MooseX-Types = %{version}-%{release}
 
-%description license
-license components for the perl-MooseX-Types package.
+%description perl
+perl components for the perl-MooseX-Types package.
 
 
 %prep
 %setup -q -n MooseX-Types-0.50
+cd %{_builddir}/MooseX-Types-0.50
 
 %build
 export http_proxy=http://127.0.0.1:9/
@@ -95,8 +96,6 @@ make TEST_VERBOSE=1 test
 
 %install
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/package-licenses/perl-MooseX-Types
-cp LICENCE %{buildroot}/usr/share/package-licenses/perl-MooseX-Types/LICENCE
 if test -f Makefile.PL; then
 make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
@@ -109,15 +108,6 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.28.2/MooseX/Types.pm
-/usr/lib/perl5/vendor_perl/5.28.2/MooseX/Types/Base.pm
-/usr/lib/perl5/vendor_perl/5.28.2/MooseX/Types/CheckedUtilExports.pm
-/usr/lib/perl5/vendor_perl/5.28.2/MooseX/Types/Combine.pm
-/usr/lib/perl5/vendor_perl/5.28.2/MooseX/Types/Moose.pm
-/usr/lib/perl5/vendor_perl/5.28.2/MooseX/Types/TypeDecorator.pm
-/usr/lib/perl5/vendor_perl/5.28.2/MooseX/Types/UndefinedType.pm
-/usr/lib/perl5/vendor_perl/5.28.2/MooseX/Types/Util.pm
-/usr/lib/perl5/vendor_perl/5.28.2/MooseX/Types/Wrapper.pm
 
 %files dev
 %defattr(-,root,root,-)
@@ -131,6 +121,14 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 /usr/share/man/man3/MooseX::Types::Util.3
 /usr/share/man/man3/MooseX::Types::Wrapper.3
 
-%files license
-%defattr(0644,root,root,0755)
-/usr/share/package-licenses/perl-MooseX-Types/LICENCE
+%files perl
+%defattr(-,root,root,-)
+/usr/lib/perl5/vendor_perl/5.30.1/MooseX/Types.pm
+/usr/lib/perl5/vendor_perl/5.30.1/MooseX/Types/Base.pm
+/usr/lib/perl5/vendor_perl/5.30.1/MooseX/Types/CheckedUtilExports.pm
+/usr/lib/perl5/vendor_perl/5.30.1/MooseX/Types/Combine.pm
+/usr/lib/perl5/vendor_perl/5.30.1/MooseX/Types/Moose.pm
+/usr/lib/perl5/vendor_perl/5.30.1/MooseX/Types/TypeDecorator.pm
+/usr/lib/perl5/vendor_perl/5.30.1/MooseX/Types/UndefinedType.pm
+/usr/lib/perl5/vendor_perl/5.30.1/MooseX/Types/Util.pm
+/usr/lib/perl5/vendor_perl/5.30.1/MooseX/Types/Wrapper.pm
