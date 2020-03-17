@@ -4,12 +4,13 @@
 #
 Name     : perl-MooseX-Types
 Version  : 0.50
-Release  : 2
+Release  : 3
 URL      : https://cpan.metacpan.org/authors/id/E/ET/ETHER/MooseX-Types-0.50.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/E/ET/ETHER/MooseX-Types-0.50.tar.gz
 Summary  : 'Organise your Moose types in libraries'
 Group    : Development/Tools
-License  : Artistic-1.0-Perl
+License  : Artistic-1.0 Artistic-1.0-Perl GPL-1.0
+Requires: perl-MooseX-Types-license = %{version}-%{release}
 Requires: perl-MooseX-Types-perl = %{version}-%{release}
 BuildRequires : buildreq-cpan
 BuildRequires : perl(B::Hooks::EndOfScope)
@@ -61,6 +62,14 @@ Requires: perl-MooseX-Types = %{version}-%{release}
 dev components for the perl-MooseX-Types package.
 
 
+%package license
+Summary: license components for the perl-MooseX-Types package.
+Group: Default
+
+%description license
+license components for the perl-MooseX-Types package.
+
+
 %package perl
 Summary: perl components for the perl-MooseX-Types package.
 Group: Default
@@ -96,6 +105,8 @@ make TEST_VERBOSE=1 test
 
 %install
 rm -rf %{buildroot}
+mkdir -p %{buildroot}/usr/share/package-licenses/perl-MooseX-Types
+cp %{_builddir}/MooseX-Types-0.50/LICENCE %{buildroot}/usr/share/package-licenses/perl-MooseX-Types/2c6591e5788bbef7f1f44f5810a4bb63ccf9a76c
 if test -f Makefile.PL; then
 make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
@@ -121,14 +132,18 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 /usr/share/man/man3/MooseX::Types::Util.3
 /usr/share/man/man3/MooseX::Types::Wrapper.3
 
+%files license
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/perl-MooseX-Types/2c6591e5788bbef7f1f44f5810a4bb63ccf9a76c
+
 %files perl
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.30.1/MooseX/Types.pm
-/usr/lib/perl5/vendor_perl/5.30.1/MooseX/Types/Base.pm
-/usr/lib/perl5/vendor_perl/5.30.1/MooseX/Types/CheckedUtilExports.pm
-/usr/lib/perl5/vendor_perl/5.30.1/MooseX/Types/Combine.pm
-/usr/lib/perl5/vendor_perl/5.30.1/MooseX/Types/Moose.pm
-/usr/lib/perl5/vendor_perl/5.30.1/MooseX/Types/TypeDecorator.pm
-/usr/lib/perl5/vendor_perl/5.30.1/MooseX/Types/UndefinedType.pm
-/usr/lib/perl5/vendor_perl/5.30.1/MooseX/Types/Util.pm
-/usr/lib/perl5/vendor_perl/5.30.1/MooseX/Types/Wrapper.pm
+/usr/lib/perl5/vendor_perl/5.30.2/MooseX/Types.pm
+/usr/lib/perl5/vendor_perl/5.30.2/MooseX/Types/Base.pm
+/usr/lib/perl5/vendor_perl/5.30.2/MooseX/Types/CheckedUtilExports.pm
+/usr/lib/perl5/vendor_perl/5.30.2/MooseX/Types/Combine.pm
+/usr/lib/perl5/vendor_perl/5.30.2/MooseX/Types/Moose.pm
+/usr/lib/perl5/vendor_perl/5.30.2/MooseX/Types/TypeDecorator.pm
+/usr/lib/perl5/vendor_perl/5.30.2/MooseX/Types/UndefinedType.pm
+/usr/lib/perl5/vendor_perl/5.30.2/MooseX/Types/Util.pm
+/usr/lib/perl5/vendor_perl/5.30.2/MooseX/Types/Wrapper.pm
