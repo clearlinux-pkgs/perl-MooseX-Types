@@ -4,7 +4,7 @@
 #
 Name     : perl-MooseX-Types
 Version  : 0.50
-Release  : 7
+Release  : 8
 URL      : https://cpan.metacpan.org/authors/id/E/ET/ETHER/MooseX-Types-0.50.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/E/ET/ETHER/MooseX-Types-0.50.tar.gz
 Summary  : 'Organise your Moose types in libraries'
@@ -138,12 +138,4 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files perl
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.34.0/MooseX/Types.pm
-/usr/lib/perl5/vendor_perl/5.34.0/MooseX/Types/Base.pm
-/usr/lib/perl5/vendor_perl/5.34.0/MooseX/Types/CheckedUtilExports.pm
-/usr/lib/perl5/vendor_perl/5.34.0/MooseX/Types/Combine.pm
-/usr/lib/perl5/vendor_perl/5.34.0/MooseX/Types/Moose.pm
-/usr/lib/perl5/vendor_perl/5.34.0/MooseX/Types/TypeDecorator.pm
-/usr/lib/perl5/vendor_perl/5.34.0/MooseX/Types/UndefinedType.pm
-/usr/lib/perl5/vendor_perl/5.34.0/MooseX/Types/Util.pm
-/usr/lib/perl5/vendor_perl/5.34.0/MooseX/Types/Wrapper.pm
+/usr/lib/perl5/*
