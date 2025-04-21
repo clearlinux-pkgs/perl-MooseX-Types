@@ -7,7 +7,7 @@
 #
 Name     : perl-MooseX-Types
 Version  : 0.51
-Release  : 17
+Release  : 18
 URL      : https://cpan.metacpan.org/authors/id/E/ET/ETHER/MooseX-Types-0.51.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/E/ET/ETHER/MooseX-Types-0.51.tar.gz
 Summary  : 'Organise your Moose types in libraries'
